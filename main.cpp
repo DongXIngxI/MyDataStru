@@ -36,6 +36,27 @@ void Insert_Any(int data,int n )
             temp2->next = temp1;
     }
 }
+void Delete_Any(int n)
+{
+    node* temp1 = head;
+    if (n>1)
+    {
+        for (int i= 0;i<n-2;i++)
+        {
+            temp1 = temp1 -> next;
+        }
+        node* temp2 = temp1; //temp2是n-1节点
+        temp1 = temp1->next; //temp1是n节点
+        temp2->next = temp1->next;
+        free(temp1);
+    }
+    else
+    {
+        head = temp1->next;
+        free(temp1);
+
+    }
+}
 void Print(node* temp)
 {
 
@@ -53,6 +74,8 @@ int main()
     Insert_Any(7,1);//7
     Insert_Any(6,1);//67
     Insert_Any(2,2);//627
+    Print(head);
+    Delete_Any(2);
     Print(head);
 
 
